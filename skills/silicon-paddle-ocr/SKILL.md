@@ -49,7 +49,7 @@ python3 scripts/ocr_skill.py [options] image_path
 | `-p, --prompt` | Recognition prompt for custom behavior |
 | `-j, --json` | Output results in JSON format |
 | `-o, --output` | Save results to specified file |
-| `--max-tokens` | Maximum tokens in response (default: 300) |
+| `--max-tokens` | Maximum tokens in response (default: 2000) |
 
 ### Examples
 
@@ -84,15 +84,32 @@ python3 scripts/ocr_skill.py --json --output results.json /path/to/images/*.jpg
 ```
 --- image.jpg ---
 识别到的文字内容
+识别到 X 处文字区域
 ```
 
 **JSON output**:
 ```json
 {
-  "image.jpg": "识别到的文字内容",
-  "image2.png": "第二张图片的文字"
+  "image.jpg": {
+    "image_path": "/path/to/image.jpg",
+    "image_size": [width, height],
+    "texts": [
+      {
+        "text": "识别的文字",
+        "box": [[x1, y1], [x2, y2], [x3, y3], [x4, y4]]
+      }
+    ],
+    "full_text": "所有文本的组合"
+  },
+  "image2.png": { ... }
 }
 ```
+
+**Coordinates Explanation:**
+- LOC values are normalized coordinates converted to pixel coordinates
+- Conversion: pixel = LOC × (image_size / LOC_max_value)
+- LOC max_value is approximately 972 (may vary by model/image)
+- The `box` field provides the four corner coordinates of each text region in pixel format
 
 ## Supported Image Formats
 
