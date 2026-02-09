@@ -1,0 +1,19 @@
+{
+  "id": "ocr-skill",
+  "name": "OCR Skill",
+  "description": "使用 PaddleOCR 识别图片中的文字内容",
+  "version": "1.0.0",
+  "author": "User",
+  "capabilities": {
+    "commands": [
+      {
+        "id": "ocr",
+        "name": "OCR",
+        "description": "识别图片中的文字",
+        "command": "/ocr",
+        "handler": "python",
+        "args": ["./skills/ocr/scripts/ocr_skill.py"]
+      }
+    ]
+  }
+}
