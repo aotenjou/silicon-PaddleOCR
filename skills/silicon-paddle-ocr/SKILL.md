@@ -1,7 +1,10 @@
 ---
-name: ocr
-description: This skill should be used when the user asks to "recognize text from an image", "extract text from a photo", "OCR this image", "read text from screenshot", or mentions "PaddleOCR", "image text recognition", "text extraction from images".
-version: 1.0.0
+name: silicon-paddle-ocr
+description: OCR skill using PaddleOCR model via SiliconFlow API. This skill should be used when the user asks to "recognize text from an image", "extract text from a photo", "OCR this image", "read text from screenshot", or mentions "PaddleOCR", "image text recognition", "text extraction from images".
+license: MIT
+metadata:
+  author: aotenjou
+  version: "1.0.0"
 ---
 
 # OCR - Image Text Recognition
